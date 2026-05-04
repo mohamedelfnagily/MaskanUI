@@ -1,0 +1,41 @@
+<div class="shell">
+  <header class="top">
+    <div class="inner">
+      <a routerLink="/" class="brand" (click)="closeMenu()">
+        <span class="mark">M</span>
+        <span class="word">Maskan</span>
+      </a>
+
+      <nav class="nav" [ngClass]="{ open: menuOpen }">
+        <a routerLink="/search" routerLinkActive="active" (click)="closeMenu()">Explore</a>
+        <a routerLink="/wishlists" routerLinkActive="active" (click)="closeMenu()">Wishlists</a>
+        <a routerLink="/trips" routerLinkActive="active" (click)="closeMenu()">Trips</a>
+        <a routerLink="/messages" routerLinkActive="active" (click)="closeMenu()">Messages</a>
+        @if (auth.currentUser()?.isHost) {
+          <a routerLink="/host" routerLinkActive="active" (click)="closeMenu()">Host</a>
+        }
+        @if (auth.currentUser()) {
+          <a routerLink="/profile" routerLinkActive="active" (click)="closeMenu()">Profile</a>
+          <button type="button" class="linkish" (click)="auth.logout(); closeMenu()">Log out</button>
+        } @else {
+          <a routerLink="/login" routerLinkActive="active" class="pill" (click)="closeMenu()">Log in</a>
+        }
+      </nav>
+
+      <button type="button" class="burger" (click)="toggleMenu()" [attr.aria-expanded]="menuOpen">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main class="main">
+    <router-outlet />
+  </main>
+
+  <footer class="foot">
+    <div class="inner foot-inner">
+      <span>© {{ year }} Maskan</span>
+      <span class="muted">In-memory demo — replace with your API when ready.</span>
+    </div>
+  </footer>
+</div>

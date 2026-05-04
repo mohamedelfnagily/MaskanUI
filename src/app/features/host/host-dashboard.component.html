@@ -1,0 +1,61 @@
+<div class="page">
+  <h1>Host dashboard</h1>
+  @if (!auth.currentUser()?.isHost) {
+    <p class="muted">Switch to a host account (or register as a host) to manage listings.</p>
+    <a routerLink="/profile" class="m-btn m-btn--primary">Go to profile</a>
+  } @else {
+    <section class="sec">
+      <div class="head">
+        <h2>Your listings</h2>
+        <a routerLink="/host/listings/new" class="m-btn m-btn--primary">Create listing</a>
+      </div>
+      <div class="cards">
+        @for (l of myListings(); track l.id) {
+          <article class="m-card card">
+            <img [src]="l.images[0]" [alt]="l.title" />
+            <div class="body">
+              <h3>{{ l.title }}</h3>
+              <p class="muted">{{ l.location.city }}</p>
+              <div class="row">
+                <a class="m-btn m-btn--ghost" [routerLink]="['/host/listings', l.id, 'edit']">Edit</a>
+                <a class="m-btn m-btn--ghost" [routerLink]="['/listings', l.id]">View</a>
+              </div>
+            </div>
+          </article>
+        } @empty {
+          <p class="empty">No listings yet.</p>
+        }
+      </div>
+    </section>
+
+    <section class="sec">
+      <h2>Reservations</h2>
+      <div class="table m-card">
+        <div class="thead">
+          <span>Listing</span>
+          <span>Guest</span>
+          <span>Dates</span>
+          <span>Status</span>
+          <span>Total</span>
+          <span></span>
+        </div>
+        @for (b of incoming(); track b.id) {
+          <div class="trow">
+            <div>{{ listings.getById(b.listingId)?.title ?? b.listingId }}</div>
+            <div>{{ auth.getUser(b.guestId)?.displayName ?? b.guestId }}</div>
+            <div>{{ b.checkIn | date }} → {{ b.checkOut | date }}</div>
+            <div class="cap">{{ b.status }}</div>
+            <div>{{ b.total | currency: 'MAD' : 'symbol-narrow' : '1.0-0' }}</div>
+            <div class="acts">
+              @if (b.status === 'pending') {
+                <button type="button" class="m-btn m-btn--primary" (click)="confirm(b.id)">Approve</button>
+              }
+            </div>
+          </div>
+        } @empty {
+          <p class="empty">No reservations yet.</p>
+        }
+      </div>
+    </section>
+  }
+</div>

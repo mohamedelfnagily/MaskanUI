@@ -1,0 +1,65 @@
+.page {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 1.1rem;
+}
+
+.row {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  margin: 1rem 0;
+}
+
+.avatar {
+  width: 92px;
+  height: 92px;
+  border-radius: 999px;
+  object-fit: cover;
+  border: 3px solid var(--maskan-white);
+  box-shadow:
+    0 0 0 3px rgba(45, 212, 191, 0.55),
+    0 0 0 6px rgba(251, 113, 133, 0.28),
+    0 12px 32px rgba(13, 148, 136, 0.28);
+}
+
+h2 {
+  margin: 0 0 0.25rem;
+}
+
+.muted {
+  margin: 0 0 0.5rem;
+  color: var(--maskan-gray-600);
+}
+
+.badge {
+  display: inline-flex;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  background: var(--maskan-gray-100);
+  color: var(--maskan-gray-800);
+  font-weight: 800;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.badge.on {
+  background: linear-gradient(120deg, rgba(45, 212, 191, 0.25), rgba(167, 139, 250, 0.22));
+  color: var(--maskan-navy-green-deep);
+  border: 1px solid rgba(13, 148, 136, 0.25);
+}
+
+.sec h3 {
+  margin: 1.25rem 0 0.5rem;
+}
+
+.sec ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  color: var(--maskan-gray-800);
+}
+
+.note {
+  margin: 0.75rem 0;
+  color: var(--maskan-gray-700);
+}

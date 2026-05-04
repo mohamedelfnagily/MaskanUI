@@ -1,0 +1,92 @@
+<div class="page m-card">
+  <div class="top">
+    <h1>{{ mode === 'new' ? 'Create listing' : 'Edit listing' }}</h1>
+    <a routerLink="/host" class="m-btn m-btn--ghost">Back</a>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="save()">
+    <label>
+      Title
+      <input type="text" formControlName="title" />
+    </label>
+    <label>
+      Description
+      <textarea rows="5" formControlName="description"></textarea>
+    </label>
+
+    <div class="two">
+      <label>
+        Property type
+        <select formControlName="propertyType">
+          <option value="entire_place">Entire place</option>
+          <option value="private_room">Private room</option>
+          <option value="shared_room">Shared room</option>
+        </select>
+      </label>
+      <label class="check">
+        <input type="checkbox" formControlName="instantBook" />
+        Instant Book enabled
+      </label>
+    </div>
+
+    <div class="two">
+      <label>
+        City
+        <input type="text" formControlName="city" />
+      </label>
+      <label>
+        Country
+        <input type="text" formControlName="country" />
+      </label>
+    </div>
+
+    <div class="four">
+      <label>
+        Guests
+        <input type="number" formControlName="maxGuests" />
+      </label>
+      <label>
+        Bedrooms
+        <input type="number" formControlName="bedrooms" />
+      </label>
+      <label>
+        Beds
+        <input type="number" formControlName="beds" />
+      </label>
+      <label>
+        Baths
+        <input type="number" formControlName="baths" />
+      </label>
+    </div>
+
+    <div class="three">
+      <label>
+        Nightly price (MAD)
+        <input type="number" formControlName="nightlyPrice" />
+      </label>
+      <label>
+        Cleaning fee
+        <input type="number" formControlName="cleaningFee" />
+      </label>
+      <label>
+        Service fee %
+        <input type="number" formControlName="serviceFeePercent" />
+      </label>
+    </div>
+
+    <label>
+      Amenities (comma-separated)
+      <input type="text" formControlName="amenities" />
+    </label>
+    <label>
+      Image seeds (comma-separated, used for picsum URLs)
+      <input type="text" formControlName="imageSeeds" />
+    </label>
+
+    @if (error) {
+      <p class="err">{{ error }}</p>
+    }
+
+    <button type="submit" class="m-btn m-btn--primary">Save</button>
+  </form>
+</div>

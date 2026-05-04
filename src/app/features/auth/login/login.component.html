@@ -1,0 +1,56 @@
+<div class="wrap">
+  <div class="panel m-card">
+    <h1>Welcome to Maskan</h1>
+    <p class="muted">Demo authentication — everything stays in memory.</p>
+
+    <div class="demo">
+      <span class="label">Quick sign-in</span>
+      <div class="row">
+        <button type="button" class="m-btn m-btn--ghost" (click)="quick('u-guest')">Continue as guest</button>
+        <button type="button" class="m-btn m-btn--ghost" (click)="quick('u-host')">Continue as host</button>
+      </div>
+    </div>
+
+    <hr />
+
+    <div class="toggle">
+      <button type="button" class="m-chip" [class.m-chip--active]="!registerMode()" (click)="registerMode.set(false)">Log in</button>
+      <button type="button" class="m-chip" [class.m-chip--active]="registerMode()" (click)="registerMode.set(true)">Create account</button>
+    </div>
+
+    @if (registerMode()) {
+      <label>
+        Display name
+        <input type="text" [(ngModel)]="displayName" name="dn" />
+      </label>
+      <label class="check">
+        <input type="checkbox" [ngModel]="asHost()" (ngModelChange)="asHost.set($event)" name="host" />
+        I want to host
+      </label>
+    }
+
+    <label>
+      Email
+      <input type="email" [(ngModel)]="email" name="em" autocomplete="username" />
+    </label>
+
+    @if (!registerMode()) {
+      <label>
+        Password
+        <input type="password" [(ngModel)]="password" name="pw" autocomplete="current-password" />
+      </label>
+    }
+
+    @if (error()) {
+      <p class="err">{{ error() }}</p>
+    }
+
+    <button type="button" class="m-btn m-btn--primary full" (click)="submit()">
+      {{ registerMode() ? 'Create account' : 'Log in' }}
+    </button>
+
+    <p class="fine">Tip: use <code>guest&#64;maskan.app</code> or <code>host&#64;maskan.app</code> with any password.</p>
+
+    <a routerLink="/" class="back">← Back home</a>
+  </div>
+</div>

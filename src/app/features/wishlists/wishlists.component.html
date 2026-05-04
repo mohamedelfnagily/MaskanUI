@@ -1,0 +1,16 @@
+<div class="page">
+  <h1>Wishlists</h1>
+  @if (!auth.currentUser()) {
+    <p class="muted">Log in to save homes you love.</p>
+    <a routerLink="/login" class="m-btn m-btn--primary">Log in</a>
+  } @else {
+    <div class="grid">
+      @for (l of wishlists.savedListings(); track l.id) {
+        <app-listing-card [listing]="l" />
+      } @empty {
+        <p class="empty">No saved stays yet. Tap the heart on a listing card.</p>
+        <a routerLink="/search" class="m-btn m-btn--primary">Explore</a>
+      }
+    </div>
+  }
+</div>

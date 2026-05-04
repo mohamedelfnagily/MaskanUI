@@ -1,0 +1,53 @@
+<section class="home-hero">
+  <div class="hero-panel m-card">
+    <div class="hero-copy">
+      <p class="eyebrow">Stays that feel like home</p>
+      <h1>Find a place you will love</h1>
+      <p class="lede">Curated homes, riads, and cabins — vivid discovery, zero backend until you are ready.</p>
+    </div>
+
+    <form class="search" (ngSubmit)="submitSearch()">
+      <label class="field">
+        <span>Where</span>
+        <input name="dest" [(ngModel)]="dest" placeholder="City, neighborhood, or landmark" />
+      </label>
+      <label class="field">
+        <span>Check-in</span>
+        <input name="ci" type="date" [(ngModel)]="checkIn" />
+      </label>
+      <label class="field">
+        <span>Check-out</span>
+        <input name="co" type="date" [(ngModel)]="checkOut" />
+      </label>
+      <label class="field small">
+        <span>Guests</span>
+        <input name="ad" type="number" min="1" [(ngModel)]="adults" />
+      </label>
+      <button class="m-btn m-btn--primary search-btn" type="submit">Search</button>
+    </form>
+  </div>
+</section>
+
+<section class="chips">
+  <span class="label">Explore by vibe</span>
+  <div class="row">
+    <button type="button" class="m-chip m-chip--teal" (click)="applyChip('city', 'Marrakech')">Marrakech</button>
+    <button type="button" class="m-chip m-chip--coral" (click)="applyChip('city', 'Fez')">Fez</button>
+    <button type="button" class="m-chip m-chip--sky" (click)="applyChip('amenity', 'Pool')">Pools</button>
+    <button type="button" class="m-chip m-chip--amber" (click)="applyChip('type', 'entire_place')">Entire homes</button>
+    <button type="button" class="m-chip m-chip--violet" (click)="applyChip('type', 'private_room')">Private rooms</button>
+    <a routerLink="/search" class="m-chip m-chip--active">All stays</a>
+  </div>
+</section>
+
+<section class="grid-sec">
+  <div class="head">
+    <h2>Recommended for you</h2>
+    <a routerLink="/search" class="link">Show all</a>
+  </div>
+  <div class="grid">
+    @for (l of featured(); track l.id) {
+      <app-listing-card [listing]="l" />
+    }
+  </div>
+</section>

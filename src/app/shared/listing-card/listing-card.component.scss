@@ -1,0 +1,122 @@
+.card {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  border-radius: 20px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: var(--maskan-shadow);
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: var(--maskan-shadow-lg);
+}
+
+.media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background: linear-gradient(145deg, #ccfbf1 0%, #e9d5ff 50%, #fce7f3 100%);
+}
+
+.media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(15, 23, 42, 0.55) 0%, transparent 45%);
+  pointer-events: none;
+}
+
+.media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.heart {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: none;
+  background: rgba(255, 255, 255, 0.92);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  font-size: 1.15rem;
+  z-index: 2;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.12);
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.heart:hover {
+  transform: scale(1.08);
+  background: var(--maskan-white);
+}
+
+.heart-on {
+  color: var(--maskan-coral-deep);
+}
+
+.heart-off {
+  color: var(--maskan-gray-700);
+}
+
+.meta {
+  padding: 0.9rem 1rem 1.1rem;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  font-size: 0.88rem;
+  color: var(--maskan-gray-600);
+}
+
+.loc {
+  font-weight: 700;
+  color: var(--maskan-gray-900);
+}
+
+.rating {
+  font-weight: 800;
+  color: #b45309;
+  background: rgba(251, 191, 36, 0.35);
+  padding: 0.15rem 0.45rem;
+  border-radius: 8px;
+  font-size: 0.8rem;
+}
+
+.title {
+  margin-top: 0.35rem;
+  font-weight: 700;
+  color: var(--maskan-gray-800);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.35;
+}
+
+.price {
+  margin-top: 0.55rem;
+  font-size: 1rem;
+  color: var(--maskan-gray-900);
+}
+
+.price strong {
+  font-weight: 800;
+  color: var(--maskan-navy-green-deep);
+  font-size: 1.05rem;
+}
+
+.night {
+  font-weight: 600;
+  color: var(--maskan-gray-500);
+}

@@ -1,0 +1,41 @@
+<div class="page m-card">
+  @if (!listing || !quote) {
+    <p class="err">This checkout link is invalid.</p>
+    <a routerLink="/search" class="m-btn m-btn--primary">Browse stays</a>
+  } @else {
+    <h1>Confirm and pay</h1>
+    <p class="muted">Demo only — no real payment is processed.</p>
+
+    <div class="split">
+      <section>
+        <h2>Trip</h2>
+        <p class="title">{{ listing.title }}</p>
+        <p class="dates">{{ checkIn | date }} → {{ checkOut | date }} · {{ guests }} guests</p>
+
+        <h2>Price details</h2>
+        <div class="rows">
+          <div class="row"><span>{{ quote.nights }} nights × {{ listing.nightlyPrice | currency: 'MAD' : 'symbol-narrow' : '1.0-0' }}</span><span>{{ quote.subtotal | currency: 'MAD' : 'symbol-narrow' : '1.0-0' }}</span></div>
+          <div class="row"><span>Cleaning fee</span><span>{{ quote.cleaningFee | currency: 'MAD' : 'symbol-narrow' : '1.0-0' }}</span></div>
+          <div class="row"><span>Maskan service fee</span><span>{{ quote.serviceFee | currency: 'MAD' : 'symbol-narrow' : '1.0-0' }}</span></div>
+          <div class="row total"><span>Total (MAD)</span><span>{{ quote.total | currency: 'MAD' : 'symbol-narrow' : '1.0-0' }}</span></div>
+        </div>
+
+        @if (error) {
+          <p class="err">{{ error }}</p>
+        }
+
+        <button type="button" class="m-btn m-btn--primary pay" (click)="confirmPay()">
+          @if (listing.instantBook) {
+            Confirm booking
+          } @else {
+            Request to book
+          }
+        </button>
+      </section>
+
+      <aside class="side">
+        <img [src]="listing.images[0]" [alt]="listing.title" />
+      </aside>
+    </div>
+  }
+</div>

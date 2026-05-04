@@ -1,0 +1,27 @@
+<a class="card" [routerLink]="['/listings', listing.id]">
+  <div class="media">
+    <img [src]="listing.images[0]" [alt]="listing.title" loading="lazy" />
+    @if (auth.currentUser()) {
+      <button type="button" class="heart" (click)="toggleHeart($event)" [attr.aria-pressed]="isHearted()">
+        @if (isHearted()) {
+          <span class="heart-on" aria-hidden="true">♥</span>
+        } @else {
+          <span class="heart-off" aria-hidden="true">♡</span>
+        }
+      </button>
+    }
+  </div>
+  <div class="meta">
+    <div class="row">
+      <span class="loc">{{ listing.location.city }}, {{ listing.location.country }}</span>
+      @if (listing.ratingAvg > 0) {
+        <span class="rating">★ {{ listing.ratingAvg | number: '1.1-2' }}</span>
+      }
+    </div>
+    <div class="title">{{ listing.title }}</div>
+    <div class="price">
+      <strong>{{ listing.nightlyPrice | currency: 'MAD' : 'symbol-narrow' : '1.0-0' }}</strong>
+      <span class="night"> / night</span>
+    </div>
+  </div>
+</a>

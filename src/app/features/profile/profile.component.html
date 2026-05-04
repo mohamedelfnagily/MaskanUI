@@ -1,0 +1,36 @@
+<div class="page m-card">
+  <h1>Profile</h1>
+  @if (!auth.currentUser()) {
+    <p class="muted">You are browsing as a guest.</p>
+    <a routerLink="/login" class="m-btn m-btn--primary">Log in</a>
+  } @else {
+    <div class="row">
+      @if (auth.currentUser()!.avatarUrl) {
+        <img [src]="auth.currentUser()!.avatarUrl" [alt]="auth.currentUser()!.displayName" class="avatar" />
+      }
+      <div>
+        <h2>{{ auth.currentUser()!.displayName }}</h2>
+        <p class="muted">{{ auth.currentUser()!.email }}</p>
+        <p class="badge" [class.on]="auth.currentUser()!.isHost">
+          {{ auth.currentUser()!.isHost ? 'Host account' : 'Guest account' }}
+        </p>
+      </div>
+    </div>
+
+    <section class="sec">
+      <h3>What Maskan includes today</h3>
+      <ul>
+        <li>Search, filters, listing pages, wishlists, and checkout quotes</li>
+        <li>Trips with cancel, Instant Book vs request-to-book, and post-stay reviews</li>
+        <li>Host dashboard with approvals for non-instant listings</li>
+        <li>Messaging threads tied to listings</li>
+      </ul>
+      <p class="note">{{ hostNote() }}</p>
+      @if (!auth.currentUser()!.isHost) {
+        <p class="muted">Want to try hosting? Create a new account with “I want to host” enabled.</p>
+      } @else {
+        <a routerLink="/host" class="m-btn m-btn--primary">Open host dashboard</a>
+      }
+    </section>
+  }
+</div>

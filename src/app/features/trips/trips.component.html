@@ -1,0 +1,65 @@
+<div class="page">
+  <h1>Trips</h1>
+  @if (!auth.currentUser()) {
+    <p class="muted">Log in to see your reservations.</p>
+    <a routerLink="/login" class="m-btn m-btn--primary">Log in</a>
+  } @else {
+    <p class="lede">Upcoming and past stays (stored in memory for this session).</p>
+
+    <div class="table m-card">
+      <div class="thead">
+        <span>Stay</span>
+        <span>Dates</span>
+        <span>Status</span>
+        <span>Total</span>
+        <span></span>
+      </div>
+      @for (b of rows(); track b.id) {
+        <div class="trow">
+          <div>
+            <a class="title" [routerLink]="['/listings', b.listingId]">{{ listings.getById(b.listingId)?.title ?? 'Listing' }}</a>
+            <div class="sub">{{ b.guests }} guests</div>
+          </div>
+          <div>{{ b.checkIn | date }} → {{ b.checkOut | date }}</div>
+          <div><span class="status" [attr.data-s]="b.status">{{ b.status }}</span></div>
+          <div>{{ b.total | currency: 'MAD' : 'symbol-narrow' : '1.0-0' }}</div>
+          <div class="acts">
+            @if (b.status === 'pending' || b.status === 'confirmed') {
+              <button type="button" class="m-btn m-btn--ghost" (click)="cancel(b)">Cancel</button>
+            }
+            @if (b.status === 'completed' && reviews.canReview(b.id, auth.currentUser()!.id)) {
+              <button type="button" class="m-btn m-btn--primary" (click)="openReview(b)">Review</button>
+            }
+          </div>
+        </div>
+      } @empty {
+        <p class="empty">No trips yet — find a place you love.</p>
+        <a routerLink="/search" class="m-btn m-btn--primary">Search</a>
+      }
+    </div>
+  }
+</div>
+
+@if (reviewBookingId()) {
+  <div class="modal" role="dialog" aria-modal="true">
+    <div class="panel m-card">
+      <h2>Write a review</h2>
+      <label>
+        Rating
+        <select [ngModel]="rating()" (ngModelChange)="rating.set(+$event)">
+          @for (n of [5, 4, 3, 2, 1]; track n) {
+            <option [ngValue]="n">{{ n }} stars</option>
+          }
+        </select>
+      </label>
+      <label>
+        Comments
+        <textarea rows="4" [ngModel]="comment()" (ngModelChange)="comment.set($event)"></textarea>
+      </label>
+      <div class="row">
+        <button type="button" class="m-btn m-btn--ghost" (click)="closeReview()">Close</button>
+        <button type="button" class="m-btn m-btn--primary" (click)="submitReview()">Submit</button>
+      </div>
+    </div>
+  </div>
+}

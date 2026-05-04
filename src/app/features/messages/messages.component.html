@@ -1,0 +1,54 @@
+<div class="page">
+  @if (!auth.currentUser()) {
+    <p class="muted">Log in to message hosts and guests.</p>
+    <a routerLink="/login" class="m-btn m-btn--primary">Log in</a>
+  } @else {
+    <div class="split">
+      <aside class="inbox m-card">
+        <h2>Inbox</h2>
+        @for (t of messages.inbox(); track t.id) {
+          <a class="thread" [routerLink]="['/messages', t.id]" routerLinkActive="on">
+            <div class="t-title">{{ t.subject }}</div>
+            <div class="t-sub">{{ listings.getById(t.listingId)?.title ?? 'Listing' }}</div>
+            <time>{{ t.updatedAt | date: 'short' }}</time>
+          </a>
+        } @empty {
+          <p class="empty">No threads yet.</p>
+        }
+      </aside>
+
+      <section class="thread-pane m-card">
+        @if (!threadId()) {
+          <p class="hint">Select a conversation.</p>
+        } @else if (!activeThread()) {
+          <p class="hint">Thread not found.</p>
+        } @else {
+          <header class="hdr">
+            <div>
+              <h1>{{ activeThread()!.subject }}</h1>
+              <p class="muted">{{ listings.getById(activeThread()!.listingId)?.title }}</p>
+            </div>
+            <a class="m-btn m-btn--ghost" [routerLink]="['/listings', activeThread()!.listingId]">View listing</a>
+          </header>
+
+          <div class="msgs">
+            @for (m of activeMsgs(); track m.id) {
+              <div class="msg" [class.me]="m.senderId === auth.currentUser()!.id">
+                <div class="bubble">
+                  <div class="who">{{ auth.getUser(m.senderId)?.displayName ?? 'User' }}</div>
+                  <p>{{ m.body }}</p>
+                  <time>{{ m.sentAt | date: 'short' }}</time>
+                </div>
+              </div>
+            }
+          </div>
+
+          <div class="composer">
+            <textarea rows="3" placeholder="Write a message" [ngModel]="draft()" (ngModelChange)="draft.set($event)"></textarea>
+            <button type="button" class="m-btn m-btn--primary" (click)="send()">Send</button>
+          </div>
+        }
+      </section>
+    </div>
+  }
+</div>

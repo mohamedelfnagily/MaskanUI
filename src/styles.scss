@@ -1,0 +1,217 @@
+:root {
+  /* Brand — deep teal + lively accents */
+  --maskan-navy-green: #0f766e;
+  --maskan-navy-green-deep: #115e59;
+  --maskan-navy-green-hover: #0d9488;
+  --maskan-navy-green-muted: #14b8a6;
+  --maskan-teal-bright: #2dd4bf;
+  --maskan-coral: #fb7185;
+  --maskan-coral-deep: #f43f5e;
+  --maskan-amber: #fbbf24;
+  --maskan-violet: #a78bfa;
+  --maskan-violet-deep: #7c3aed;
+  --maskan-sky: #38bdf8;
+
+  --maskan-gradient-brand: linear-gradient(135deg, #0d9488 0%, #0f766e 38%, #115e59 100%);
+  --maskan-gradient-cta: linear-gradient(135deg, #14b8a6 0%, #0d9488 50%, #0f766e 100%);
+  --maskan-gradient-mark: linear-gradient(145deg, #2dd4bf 0%, #0d9488 40%, #134e4a 100%);
+  --maskan-gradient-hot: linear-gradient(135deg, #fb7185 0%, #f43f5e 55%, #ec4899 100%);
+  --maskan-gradient-sunset: linear-gradient(120deg, #fbbf24 0%, #fb923c 45%, #f472b6 100%);
+
+  --maskan-gray-50: #f8fafc;
+  --maskan-gray-100: #f1f5f9;
+  --maskan-gray-200: #e2e8f0;
+  --maskan-gray-400: #94a3b8;
+  --maskan-gray-500: #64748b;
+  --maskan-gray-600: #475569;
+  --maskan-gray-700: #334155;
+  --maskan-gray-800: #1e293b;
+  --maskan-gray-900: #0f172a;
+  --maskan-white: #ffffff;
+
+  --maskan-radius: 18px;
+  --maskan-radius-sm: 12px;
+  --maskan-radius-pill: 999px;
+
+  --maskan-shadow: 0 2px 8px rgba(15, 23, 42, 0.06), 0 12px 32px rgba(15, 23, 42, 0.08);
+  --maskan-shadow-lg: 0 8px 24px rgba(15, 23, 42, 0.08), 0 24px 48px rgba(13, 148, 136, 0.12);
+  --maskan-shadow-glow: 0 8px 28px rgba(13, 148, 136, 0.35);
+
+  --maskan-font: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--maskan-font);
+  color: var(--maskan-gray-900);
+  line-height: 1.55;
+  background-color: #f1f5f9;
+  background-image:
+    radial-gradient(ellipse 100% 90% at 0% -30%, rgba(45, 212, 191, 0.22), transparent 55%),
+    radial-gradient(ellipse 80% 70% at 100% -10%, rgba(251, 113, 133, 0.16), transparent 50%),
+    radial-gradient(ellipse 70% 60% at 100% 80%, rgba(167, 139, 250, 0.14), transparent 45%),
+    radial-gradient(ellipse 60% 50% at 0% 100%, rgba(251, 191, 36, 0.12), transparent 40%);
+  background-attachment: fixed;
+}
+
+a {
+  color: var(--maskan-navy-green-deep);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+a:hover {
+  color: var(--maskan-navy-green-hover);
+  text-decoration: underline;
+}
+
+button {
+  font-family: inherit;
+}
+
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--maskan-teal-bright);
+  outline-offset: 2px;
+}
+
+.m-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: none;
+  border-radius: var(--maskan-radius-pill);
+  padding: 0.7rem 1.35rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease, background 0.18s ease;
+}
+
+.m-btn--primary {
+  background: var(--maskan-gradient-cta);
+  color: var(--maskan-white);
+  box-shadow: var(--maskan-shadow-glow);
+}
+
+.m-btn--primary:hover:not(:disabled) {
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+  box-shadow: 0 12px 36px rgba(13, 148, 136, 0.42);
+}
+
+.m-btn--primary:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.m-btn--ghost {
+  background: rgba(255, 255, 255, 0.85);
+  color: var(--maskan-navy-green-deep);
+  border: 1px solid rgba(148, 163, 184, 0.45);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.06);
+}
+
+.m-btn--ghost:hover:not(:disabled) {
+  background: var(--maskan-white);
+  border-color: var(--maskan-navy-green-muted);
+  color: var(--maskan-navy-green);
+}
+
+.m-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.m-card {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(12px);
+  border-radius: var(--maskan-radius);
+  box-shadow: var(--maskan-shadow);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.m-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.45rem 1rem;
+  border-radius: var(--maskan-radius-pill);
+  background: rgba(255, 255, 255, 0.75);
+  color: var(--maskan-gray-700);
+  font-size: 0.875rem;
+  font-weight: 600;
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.m-chip:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
+}
+
+.m-chip--active {
+  background: var(--maskan-gradient-brand);
+  color: var(--maskan-white);
+  border-color: transparent;
+  box-shadow: 0 6px 20px rgba(13, 148, 136, 0.35);
+}
+
+.m-chip--teal {
+  background: rgba(45, 212, 191, 0.2);
+  color: var(--maskan-navy-green-deep);
+  border-color: rgba(13, 148, 136, 0.35);
+}
+
+.m-chip--coral {
+  background: rgba(251, 113, 133, 0.22);
+  color: #9f1239;
+  border-color: rgba(244, 63, 94, 0.35);
+}
+
+.m-chip--amber {
+  background: rgba(251, 191, 36, 0.28);
+  color: #92400e;
+  border-color: rgba(245, 158, 11, 0.4);
+}
+
+.m-chip--violet {
+  background: rgba(167, 139, 250, 0.25);
+  color: #5b21b6;
+  border-color: rgba(124, 58, 237, 0.35);
+}
+
+.m-chip--sky {
+  background: rgba(56, 189, 248, 0.2);
+  color: #075985;
+  border-color: rgba(14, 165, 233, 0.35);
+}
+
+button.m-chip {
+  cursor: pointer;
+  appearance: none;
+  font: inherit;
+}

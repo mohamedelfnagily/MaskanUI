@@ -1,0 +1,108 @@
+@if (!listing) {
+  <p class="missing">This listing does not exist (or was removed).</p>
+  <a routerLink="/search" class="m-btn m-btn--primary">Back to search</a>
+} @else {
+  <div class="page">
+    <div class="title-row">
+      <div>
+        <h1>{{ listing.title }}</h1>
+        <div class="sub">
+          <span>{{ listing.location.city }}, {{ listing.location.country }}</span>
+          @if (listing.ratingAvg > 0) {
+            <span>· ★ {{ listing.ratingAvg | number: '1.1-2' }} ({{ listing.reviewCount }})</span>
+          }
+          <span>· {{ listings.propertyTypeLabel(listing.propertyType) }}</span>
+          @if (listing.instantBook) {
+            <span class="pill pill--hot">Instant Book</span>
+          }
+        </div>
+      </div>
+      <div class="actions">
+        @if (auth.currentUser()) {
+          <button type="button" class="m-btn m-btn--ghost" (click)="toggleWish()">
+            {{ wishlists.isSaved(listing.id) ? 'Saved' : 'Save' }}
+          </button>
+        }
+        <button type="button" class="m-btn m-btn--ghost" (click)="contactHost()">Contact host</button>
+      </div>
+    </div>
+
+    <div class="gallery">
+      <div class="hero">
+        <img [src]="activeImage || listing.images[0]" [alt]="listing.title" />
+      </div>
+      <div class="thumbs">
+        @for (im of listing.images; track im) {
+          <button type="button" (click)="selectImage(im)" [ngClass]="{ on: im === (activeImage || listing.images[0]) }">
+            <img [src]="im" alt="" />
+          </button>
+        }
+      </div>
+    </div>
+
+    <div class="layout">
+      <section class="main m-card">
+        <h2>About this space</h2>
+        <p class="desc">{{ listing.description }}</p>
+
+        <h3>What this place offers</h3>
+        <ul class="amenities">
+          @for (a of listing.amenities; track a) {
+            <li>{{ a }}</li>
+          }
+        </ul>
+
+        <h3>Reviews</h3>
+        @if (reviewList().length === 0) {
+          <p class="muted">No reviews yet for this listing.</p>
+        } @else {
+          <div class="reviews">
+            @for (r of reviewList(); track r.id) {
+              <article class="rev">
+                <div class="rev-top">
+                  <strong>{{ auth.getUser(r.authorId)?.displayName ?? 'Guest' }}</strong>
+                  <span>★ {{ r.rating }}</span>
+                </div>
+                <p>{{ r.comment }}</p>
+                <time>{{ r.createdAt | date: 'mediumDate' }}</time>
+              </article>
+            }
+          </div>
+        }
+      </section>
+
+      <aside class="sticky m-card">
+        <div class="price-line">
+          <strong>{{ listing.nightlyPrice | currency: 'MAD' : 'symbol-narrow' : '1.0-0' }}</strong>
+          <span> / night</span>
+        </div>
+        <div class="facts">
+          <span>{{ listing.maxGuests }} guests</span>
+          <span>{{ listing.bedrooms }} bedrooms</span>
+          <span>{{ listing.beds }} beds</span>
+          <span>{{ listing.baths }} baths</span>
+        </div>
+
+        <label>
+          Check-in
+          <input type="date" [(ngModel)]="checkIn" name="ci" />
+        </label>
+        <label>
+          Check-out
+          <input type="date" [(ngModel)]="checkOut" name="co" />
+        </label>
+        <label>
+          Guests
+          <input type="number" min="1" [max]="listing.maxGuests" [(ngModel)]="guests" name="g" />
+        </label>
+
+        @if (error) {
+          <p class="err">{{ error }}</p>
+        }
+
+        <button type="button" class="m-btn m-btn--primary full" (click)="reserve()">Reserve</button>
+        <p class="fine">You will not be charged — this is a front-end demo.</p>
+      </aside>
+    </div>
+  </div>
+}

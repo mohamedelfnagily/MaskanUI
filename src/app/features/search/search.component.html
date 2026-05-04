@@ -1,0 +1,99 @@
+<div class="page">
+  <aside class="side m-card">
+    <h2>Filters</h2>
+
+    <div class="block">
+      <h3>Destination</h3>
+      <input
+        type="text"
+        [ngModel]="search.filters().query"
+        (ngModelChange)="search.patch({ query: $event })"
+        placeholder="Where to?"
+      />
+    </div>
+
+    <div class="block two">
+      <div>
+        <h3>Check-in</h3>
+        <input
+          type="date"
+          [ngModel]="search.filters().checkIn"
+          (ngModelChange)="search.patch({ checkIn: $event || null })"
+        />
+      </div>
+      <div>
+        <h3>Check-out</h3>
+        <input
+          type="date"
+          [ngModel]="search.filters().checkOut"
+          (ngModelChange)="search.patch({ checkOut: $event || null })"
+        />
+      </div>
+    </div>
+
+    <div class="block two">
+      <div>
+        <h3>Adults</h3>
+        <input
+          type="number"
+          min="1"
+          [ngModel]="search.filters().adults"
+          (ngModelChange)="search.patch({ adults: +$event })"
+        />
+      </div>
+      <div>
+        <h3>Children</h3>
+        <input
+          type="number"
+          min="0"
+          [ngModel]="search.filters().children"
+          (ngModelChange)="search.patch({ children: +$event })"
+        />
+      </div>
+    </div>
+
+    <div class="block two">
+      <div>
+        <h3>Min price / night</h3>
+        <input type="number" min="0" [(ngModel)]="minPrice" (change)="applyFilters()" />
+      </div>
+      <div>
+        <h3>Max price / night</h3>
+        <input type="number" min="0" [(ngModel)]="maxPrice" (change)="applyFilters()" />
+      </div>
+    </div>
+
+    <div class="block">
+      <h3>Property type</h3>
+      <div class="seg">
+        <button type="button" class="m-chip" [class.m-chip--active]="search.filters().propertyType === 'any'" (click)="setType('any')">Any</button>
+        <button type="button" class="m-chip" [class.m-chip--active]="search.filters().propertyType === 'entire_place'" (click)="setType('entire_place')">Entire</button>
+        <button type="button" class="m-chip" [class.m-chip--active]="search.filters().propertyType === 'private_room'" (click)="setType('private_room')">Private</button>
+        <button type="button" class="m-chip" [class.m-chip--active]="search.filters().propertyType === 'shared_room'" (click)="setType('shared_room')">Shared</button>
+      </div>
+    </div>
+
+    <div class="block">
+      <label class="check">
+        <input type="checkbox" [checked]="search.filters().instantBookOnly" (change)="toggleInstant()" />
+        Instant Book only
+      </label>
+    </div>
+
+    <button type="button" class="m-btn m-btn--ghost full" (click)="search.reset(); minPrice = null; maxPrice = null">Reset</button>
+  </aside>
+
+  <section class="results">
+    <div class="bar">
+      <h1>Stays</h1>
+      <span class="count">{{ results().length }} places</span>
+    </div>
+    <div class="grid">
+      @for (l of results(); track l.id) {
+        <app-listing-card [listing]="l" />
+      } @empty {
+        <p class="empty">No matches — try widening dates or clearing filters.</p>
+      }
+    </div>
+  </section>
+</div>

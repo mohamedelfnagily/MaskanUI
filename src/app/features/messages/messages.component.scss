@@ -1,0 +1,154 @@
+.page {
+  max-width: 1160px;
+  margin: 0 auto;
+}
+
+.split {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 1rem;
+  align-items: start;
+}
+
+.inbox {
+  padding: 0.75rem;
+}
+
+.inbox h2 {
+  margin: 0 0 0.65rem;
+  font-size: 1.05rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  background: linear-gradient(95deg, var(--maskan-gray-900), var(--maskan-navy-green));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.thread {
+  display: block;
+  padding: 0.65rem;
+  border-radius: 10px;
+  color: inherit;
+  text-decoration: none;
+  border: 1px solid transparent;
+}
+
+.thread:hover {
+  background: rgba(45, 212, 191, 0.1);
+  text-decoration: none;
+}
+
+.thread.on {
+  border-color: rgba(13, 148, 136, 0.45);
+  background: linear-gradient(120deg, rgba(45, 212, 191, 0.14), rgba(167, 139, 250, 0.12));
+  box-shadow: 0 4px 16px rgba(13, 148, 136, 0.12);
+}
+
+.t-title {
+  font-weight: 800;
+}
+
+.t-sub {
+  color: var(--maskan-gray-600);
+  font-size: 0.9rem;
+  margin-top: 0.15rem;
+}
+
+time {
+  color: var(--maskan-gray-500);
+  font-size: 0.8rem;
+}
+
+.thread-pane {
+  padding: 0.85rem;
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+}
+
+.hint {
+  margin: 0;
+  color: var(--maskan-gray-600);
+}
+
+.hdr {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-start;
+  border-bottom: 1px solid var(--maskan-gray-100);
+  padding-bottom: 0.75rem;
+}
+
+.hdr h1 {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: var(--maskan-gray-900);
+}
+
+.muted {
+  margin: 0.25rem 0 0;
+  color: var(--maskan-gray-600);
+}
+
+.msgs {
+  flex: 1;
+  padding: 0.75rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.msg {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.msg.me {
+  justify-content: flex-end;
+}
+
+.bubble {
+  max-width: min(560px, 92%);
+  border: 1px solid var(--maskan-gray-100);
+  background: var(--maskan-gray-50);
+  border-radius: 12px;
+  padding: 0.65rem 0.75rem;
+}
+
+.msg.me .bubble {
+  background: linear-gradient(135deg, rgba(45, 212, 191, 0.22), rgba(56, 189, 248, 0.18));
+  border-color: rgba(13, 148, 136, 0.35);
+}
+
+.who {
+  font-weight: 800;
+  font-size: 0.85rem;
+}
+
+.bubble p {
+  margin: 0.35rem 0;
+}
+
+.composer {
+  border-top: 1px solid var(--maskan-gray-100);
+  padding-top: 0.75rem;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.composer textarea {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid var(--maskan-gray-200);
+  padding: 0.65rem 0.75rem;
+  resize: vertical;
+}
+
+@media (max-width: 900px) {
+  .split {
+    grid-template-columns: 1fr;
+  }
+}
