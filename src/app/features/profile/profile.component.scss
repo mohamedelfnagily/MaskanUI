@@ -18,9 +18,9 @@
   object-fit: cover;
   border: 3px solid var(--maskan-white);
   box-shadow:
-    0 0 0 3px rgba(45, 212, 191, 0.55),
-    0 0 0 6px rgba(251, 113, 133, 0.28),
-    0 12px 32px rgba(13, 148, 136, 0.28);
+    0 0 0 3px rgba(156, 182, 164, 0.55),
+    0 0 0 6px rgba(181, 205, 192, 0.35),
+    0 12px 32px rgba(92, 115, 101, 0.22);
 }
 
 h2 {
@@ -44,9 +44,9 @@ h2 {
 }
 
 .badge.on {
-  background: linear-gradient(120deg, rgba(45, 212, 191, 0.25), rgba(167, 139, 250, 0.22));
+  background: rgba(156, 182, 164, 0.28);
   color: var(--maskan-navy-green-deep);
-  border: 1px solid rgba(13, 148, 136, 0.25);
+  border: 1px solid rgba(156, 182, 164, 0.4);
 }
 
 .sec h3 {

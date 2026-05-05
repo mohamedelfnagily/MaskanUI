@@ -8,10 +8,10 @@
   position: sticky;
   top: 0;
   z-index: 20;
-  background: rgba(255, 255, 255, 0.78);
-  backdrop-filter: blur(16px) saturate(1.4);
-  border-bottom: 1px solid rgba(226, 232, 240, 0.85);
-  box-shadow: 0 4px 24px rgba(15, 23, 42, 0.06);
+  background: rgba(247, 247, 247, 0.92);
+  backdrop-filter: blur(14px) saturate(1.2);
+  border-bottom: 1px solid rgba(228, 228, 228, 0.95);
+  box-shadow: 0 2px 16px rgba(26, 26, 26, 0.04);
 }
 
 .top::after {
@@ -20,16 +20,9 @@
   left: 0;
   right: 0;
   bottom: 0;
-  height: 3px;
-  background: linear-gradient(
-    90deg,
-    var(--maskan-teal-bright) 0%,
-    var(--maskan-navy-green) 22%,
-    var(--maskan-coral) 52%,
-    var(--maskan-amber) 78%,
-    var(--maskan-violet) 100%
-  );
-  opacity: 0.95;
+  height: 2px;
+  background: var(--maskan-navy-green);
+  opacity: 0.55;
 }
 
 .inner {
@@ -47,35 +40,22 @@
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 0.65rem;
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  color: var(--maskan-gray-900);
   text-decoration: none;
+  line-height: 0;
 }
 
 .brand:hover {
   text-decoration: none;
+  opacity: 0.92;
 }
 
-.mark {
-  width: 40px;
-  height: 40px;
-  border-radius: 14px;
-  display: grid;
-  place-items: center;
-  background: var(--maskan-gradient-mark);
-  color: var(--maskan-white);
-  font-size: 1rem;
-  box-shadow: 0 6px 20px rgba(13, 148, 136, 0.45);
-}
-
-.word {
-  font-size: 1.2rem;
-  background: linear-gradient(120deg, var(--maskan-gray-900) 0%, var(--maskan-navy-green) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+.brand-logo {
+  display: block;
+  height: clamp(38px, 5.5vw, 48px);
+  width: auto;
+  max-width: min(220px, 52vw);
+  object-fit: contain;
+  object-position: left center;
 }
 
 .nav {
@@ -89,6 +69,7 @@
 .nav a {
   color: var(--maskan-gray-700);
   font-weight: 600;
+  font-size: 0.88rem;
   text-decoration: none;
   padding: 0.5rem 0.85rem;
   border-radius: var(--maskan-radius-pill);
@@ -96,22 +77,23 @@
 }
 
 .nav a:hover {
-  background: rgba(45, 212, 191, 0.12);
+  background: rgba(156, 182, 164, 0.2);
   color: var(--maskan-navy-green-deep);
   text-decoration: none;
 }
 
 .nav a.active {
   color: var(--maskan-white);
-  background: var(--maskan-gradient-brand);
-  box-shadow: 0 4px 16px rgba(13, 148, 136, 0.3);
+  background: var(--maskan-navy-green);
+  box-shadow: 0 4px 14px rgba(124, 150, 136, 0.3);
 }
 
 .pill {
-  background: var(--maskan-gradient-hot) !important;
+  background: var(--maskan-navy-green) !important;
   color: var(--maskan-white) !important;
   padding: 0.5rem 1.1rem !important;
-  box-shadow: 0 6px 22px rgba(244, 63, 94, 0.35) !important;
+  border-radius: var(--maskan-radius-pill) !important;
+  box-shadow: 0 4px 16px rgba(92, 115, 101, 0.25) !important;
 }
 
 .pill:hover {
@@ -130,7 +112,7 @@
 }
 
 .linkish:hover {
-  background: rgba(148, 163, 184, 0.15);
+  background: rgba(156, 182, 164, 0.15);
   color: var(--maskan-gray-900);
 }
 
@@ -140,35 +122,35 @@
 }
 
 .foot {
-  border-top: 1px solid rgba(226, 232, 240, 0.9);
-  background: linear-gradient(180deg, rgba(15, 23, 42, 0.97) 0%, #0f172a 100%);
-  color: rgba(248, 250, 252, 0.88);
+  border-top: 1px solid rgba(228, 228, 228, 0.95);
+  background: linear-gradient(180deg, #3d4a42 0%, #2c3330 100%);
+  color: rgba(250, 250, 250, 0.9);
 }
 
 .foot-inner {
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 0.5rem;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
 }
 
 .foot .muted {
-  color: rgba(148, 163, 184, 0.95);
+  color: rgba(197, 217, 204, 0.75);
 }
 
 .burger {
   display: none;
   width: 44px;
   height: 44px;
-  border-radius: 14px;
-  border: 1px solid rgba(226, 232, 240, 0.95);
-  background: rgba(255, 255, 255, 0.9);
+  border-radius: var(--maskan-radius-sm);
+  border: 1px solid var(--maskan-gray-200);
+  background: var(--maskan-white);
   cursor: pointer;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 5px;
-  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.06);
+  box-shadow: 0 2px 8px rgba(26, 26, 26, 0.05);
 }
 
 .burger span {
@@ -188,14 +170,14 @@
     left: 0;
     right: 0;
     top: 100%;
-    background: rgba(255, 255, 255, 0.96);
+    background: rgba(255, 255, 255, 0.98);
     backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(226, 232, 240, 0.95);
+    border-bottom: 1px solid rgba(228, 228, 228, 0.95);
     padding: 0.85rem 1.25rem 1.1rem;
     display: none;
     flex-direction: column;
     align-items: stretch;
-    box-shadow: 0 16px 40px rgba(15, 23, 42, 0.1);
+    box-shadow: 0 16px 36px rgba(26, 26, 26, 0.08);
   }
 
   .nav.open {

@@ -19,21 +19,18 @@
   left: 10px;
   top: 14px;
   bottom: 14px;
-  width: 5px;
+  width: 4px;
   border-radius: 999px;
-  background: linear-gradient(180deg, var(--maskan-teal-bright), var(--maskan-coral), var(--maskan-violet));
-  box-shadow: 0 0 16px rgba(45, 212, 191, 0.35);
+  background: linear-gradient(180deg, var(--maskan-navy-green-muted), var(--maskan-navy-green));
+  box-shadow: 0 0 12px rgba(156, 182, 164, 0.35);
 }
 
 .side h2 {
   margin: 0 0 0.85rem;
   font-size: 1.15rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  background: linear-gradient(95deg, var(--maskan-gray-900), var(--maskan-navy-green));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--maskan-gray-900);
 }
 
 .block {
@@ -61,8 +58,8 @@
 
 .block input:focus {
   outline: none;
-  border-color: var(--maskan-navy-green-muted);
-  box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.22);
+  border-color: var(--maskan-navy-green);
+  box-shadow: 0 0 0 3px rgba(156, 182, 164, 0.22);
 }
 
 .two {
@@ -105,20 +102,17 @@
 .results h1 {
   margin: 0;
   font-size: 1.5rem;
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  background: linear-gradient(100deg, var(--maskan-gray-900) 0%, var(--maskan-navy-green) 55%, var(--maskan-violet-deep) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--maskan-gray-900);
 }
 
 .count {
-  font-weight: 700;
+  font-weight: 600;
   padding: 0.35rem 0.75rem;
   border-radius: var(--maskan-radius-pill);
-  background: rgba(251, 191, 36, 0.22);
-  color: #92400e;
+  background: rgba(156, 182, 164, 0.22);
+  color: var(--maskan-navy-green-deep);
 }
 
 .grid {
@@ -131,8 +125,8 @@
   grid-column: 1 / -1;
   margin: 0;
   padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.75);
-  border: 2px dashed rgba(167, 139, 250, 0.45);
+  background: rgba(255, 255, 255, 0.85);
+  border: 2px dashed rgba(156, 182, 164, 0.5);
   border-radius: var(--maskan-radius);
   color: var(--maskan-gray-700);
   font-weight: 600;

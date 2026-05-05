@@ -2,8 +2,12 @@
   <header class="top">
     <div class="inner">
       <a routerLink="/" class="brand" (click)="closeMenu()">
-        <span class="mark">M</span>
-        <span class="word">Maskan</span>
+        <img
+          class="brand-logo"
+          src="/logo-maskan.png"
+          alt="Maskan — Home anywhere"
+          decoding="async"
+        />
       </a>
 
       <nav class="nav" [ngClass]="{ open: menuOpen }">

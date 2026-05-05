@@ -20,11 +20,9 @@
   padding: 2px;
   background: linear-gradient(
     125deg,
-    rgba(45, 212, 191, 0.65) 0%,
-    rgba(13, 148, 136, 0.5) 25%,
-    rgba(251, 113, 133, 0.45) 55%,
-    rgba(251, 191, 36, 0.5) 85%,
-    rgba(167, 139, 250, 0.55) 100%
+    rgba(156, 182, 164, 0.55) 0%,
+    rgba(181, 205, 192, 0.45) 40%,
+    rgba(138, 169, 154, 0.5) 100%
   );
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
@@ -41,26 +39,21 @@
 
 .eyebrow {
   margin: 0 0 0.4rem;
-  font-size: 0.8rem;
-  font-weight: 800;
-  letter-spacing: 0.12em;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  background: var(--maskan-gradient-sunset);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  font-family: var(--maskan-font);
+  color: var(--maskan-navy-green-deep);
 }
 
 .hero-copy h1 {
   margin: 0 0 0.5rem;
   font-size: clamp(2rem, 4vw, 2.75rem);
-  font-weight: 800;
-  letter-spacing: -0.04em;
-  line-height: 1.1;
-  background: linear-gradient(115deg, var(--maskan-gray-900) 0%, var(--maskan-navy-green-deep) 35%, #0e7490 70%, var(--maskan-violet-deep) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+  color: var(--maskan-gray-900);
 }
 
 .lede {
@@ -80,12 +73,13 @@
 .field {
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
-  font-size: 0.75rem;
-  font-weight: 800;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  font-family: var(--maskan-font-heading);
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--maskan-gray-500);
+  letter-spacing: 0.08em;
+  color: var(--maskan-gray-800);
 }
 
 .field input {
@@ -100,8 +94,8 @@
 
 .field input:focus {
   outline: none;
-  border-color: var(--maskan-navy-green-muted);
-  box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.25);
+  border-color: var(--maskan-navy-green);
+  box-shadow: 0 0 0 3px rgba(156, 182, 164, 0.28);
 }
 
 .search-btn {
@@ -127,11 +121,12 @@
 
 .chips .label {
   display: block;
-  font-weight: 800;
-  font-size: 0.85rem;
-  letter-spacing: 0.04em;
+  font-family: var(--maskan-font-heading);
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--maskan-gray-600);
+  color: var(--maskan-gray-800);
   margin-bottom: 0.65rem;
 }
 
@@ -161,22 +156,26 @@
 .head h2 {
   margin: 0;
   font-size: 1.35rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
+  font-weight: 600;
+  letter-spacing: 0.02em;
   color: var(--maskan-gray-900);
 }
 
 .link {
-  font-weight: 800;
-  padding: 0.35rem 0.75rem;
-  border-radius: var(--maskan-radius-pill);
-  background: rgba(45, 212, 191, 0.15);
+  font-weight: 600;
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--maskan-radius-sm);
+  border: 1px solid var(--maskan-navy-green);
+  background: transparent;
   color: var(--maskan-navy-green-deep);
   text-decoration: none;
 }
 
 .link:hover {
-  background: rgba(45, 212, 191, 0.28);
+  background: rgba(156, 182, 164, 0.15);
   text-decoration: none;
 }
 

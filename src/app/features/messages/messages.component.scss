@@ -17,12 +17,9 @@
 .inbox h2 {
   margin: 0 0 0.65rem;
   font-size: 1.05rem;
-  font-weight: 900;
-  letter-spacing: -0.02em;
-  background: linear-gradient(95deg, var(--maskan-gray-900), var(--maskan-navy-green));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--maskan-gray-900);
 }
 
 .thread {
@@ -35,14 +32,14 @@
 }
 
 .thread:hover {
-  background: rgba(45, 212, 191, 0.1);
+  background: rgba(156, 182, 164, 0.12);
   text-decoration: none;
 }
 
 .thread.on {
-  border-color: rgba(13, 148, 136, 0.45);
-  background: linear-gradient(120deg, rgba(45, 212, 191, 0.14), rgba(167, 139, 250, 0.12));
-  box-shadow: 0 4px 16px rgba(13, 148, 136, 0.12);
+  border-color: rgba(156, 182, 164, 0.55);
+  background: rgba(156, 182, 164, 0.16);
+  box-shadow: 0 4px 14px rgba(92, 115, 101, 0.12);
 }
 
 .t-title {
@@ -119,8 +116,8 @@ time {
 }
 
 .msg.me .bubble {
-  background: linear-gradient(135deg, rgba(45, 212, 191, 0.22), rgba(56, 189, 248, 0.18));
-  border-color: rgba(13, 148, 136, 0.35);
+  background: rgba(156, 182, 164, 0.22);
+  border-color: rgba(156, 182, 164, 0.45);
 }
 
 .who {
